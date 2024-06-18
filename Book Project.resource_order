@@ -16,5 +16,15 @@
     {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
-  "ResourceOrderSettings":[],
+  "ResourceOrderSettings":[
+    {"name":"obj_button","order":2,"path":"objects/obj_button/obj_button.yy",},
+    {"name":"obj_controller","order":1,"path":"objects/obj_controller/obj_controller.yy",},
+    {"name":"obj_room_start","order":3,"path":"objects/obj_room_start/obj_room_start.yy",},
+    {"name":"room_button","order":1,"path":"rooms/room_button/room_button.yy",},
+    {"name":"sprite_devil","order":3,"path":"sprites/sprite_devil/sprite_devil.yy",},
+    {"name":"sprite_freeze","order":2,"path":"sprites/sprite_freeze/sprite_freeze.yy",},
+    {"name":"sprite_robot","order":4,"path":"sprites/sprite_robot/sprite_robot.yy",},
+    {"name":"sprite_sunglasses","order":5,"path":"sprites/sprite_sunglasses/sprite_sunglasses.yy",},
+    {"name":"sprite_winking","order":1,"path":"sprites/sprite_winking/sprite_winking.yy",},
+  ],
 }

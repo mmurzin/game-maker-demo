@@ -19,7 +19,3 @@ case "gamepad lost":
 	show_debug_message("--> event gamepad lost");
     break;
 }
-
-function init_gamepads(){
-	
-}
