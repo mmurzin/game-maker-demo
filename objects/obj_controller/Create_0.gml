@@ -12,7 +12,9 @@ Direction = {
 persistent = true;
 global.selected_gamepad = -1
 global.gamepads = ds_map_create();
+alarm_speed = game_get_speed(gamespeed_fps)/10;
 
+alarm[0] = alarm_speed;
 
 grid_width = 100; 
 grid_height = 100;
@@ -20,10 +22,74 @@ min_gap = 32;
 objects_grid = ds_grid_create(grid_width, grid_height);
 buttons_grid = ds_grid_create(grid_width, grid_height);
 
-current_x = 0;
-current_y = 0;
+current_x = -1;
+current_y = -1;
+
+function handle_click(){
+	if(current_x == -1 && current_y == -1){
+		return
+	}
+	var button = ds_grid_get(buttons_grid, current_x, current_y)
+	button.on_click();
+}
 
 
+function handle_action(action){
+	if(action == undefined){
+		return
+	}
+	var max_x = ds_grid_width(buttons_grid) - 1;
+	var max_y = ds_grid_height(buttons_grid) - 1;
+	
+	if(current_x == -1 && current_y == -1){
+		current_x = 0
+		current_y = 0
+		update_button_position(current_x, current_y)
+		return 
+	}
+	clear_prev_focus(current_x, current_y)
+	if(action == Direction.Up){
+		var new_y = current_y + 1
+		if(new_y > max_y){
+			current_y = 0
+		} else {
+			current_y = new_y
+		}
+	} else if (action == Direction.Down) {
+		var new_y = current_y - 1
+		if(new_y < 0){
+			current_y = max_y
+		} else {
+			current_y = new_y
+		}
+	} else if (action == Direction.Left) {
+		var new_x = current_x - 1
+		if(new_x < 0){
+			current_x = max_x
+		} else {
+			current_x = new_x
+		}
+	}  else if (action == Direction.Right) {
+		var new_x = current_x + 1
+		if(new_x > max_x ){
+			current_x = 0
+		} else {
+			current_x = new_x
+		}
+	}
+	update_button_position(current_x, current_y)
+}
+
+function update_button_position(x, y){
+	var button = ds_grid_get(buttons_grid, x, y)
+	button.is_focused = true
+	
+}
+
+function clear_prev_focus(x, y) {
+	var button = ds_grid_get(buttons_grid, x, y)
+	button.is_focused = false
+}
 
 function add_button(button){
     var obj_x = button.x;
@@ -90,7 +156,7 @@ function _recalculate_button_grid(){
 		buttons_j = 0
 	    for (var j = 0; j < ds_grid_height(objects_grid); j++) {
 	        if (ds_grid_get(objects_grid, i, j) != 0) {
-				//show_debug_message("insert item i "+string(buttons_i) +" buttons_j "+string(buttons_j))
+				show_debug_message("insert item i "+string(buttons_i) +" buttons_j "+string(buttons_j))
 				ds_grid_set(buttons_grid, buttons_i, buttons_j, ds_grid_get(objects_grid, i, j));
 				include_element = true
 				buttons_j++
@@ -100,4 +166,6 @@ function _recalculate_button_grid(){
 			buttons_i++
 		}
 	}
+	show_debug_message("ds_grid_width " + string(ds_grid_width(buttons_grid)))
+	show_debug_message("ds_grid_height " + string(ds_grid_height(buttons_grid)))
 }

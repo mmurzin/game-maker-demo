@@ -17,7 +17,7 @@ if global.selected_gamepad != -1 && ds_map_exists(global.gamepads, global.select
 	
 	
 
-	if (keyboard_check_pressed(vk_right)) {
+	if (keyboard_check_pressed(vk_lalt)) {
 		var _keys = ds_map_keys_to_array(global.gamepads)
 		var _current_index = -1
 		var _next_index = -1
@@ -39,7 +39,7 @@ if global.selected_gamepad != -1 && ds_map_exists(global.gamepads, global.select
 		}
 	}
 	
-	if (keyboard_check_pressed(vk_left)) {
+	if (keyboard_check_pressed(vk_lcontrol)) {
 	    var _keys = ds_map_keys_to_array(global.gamepads)
 		var _current_index = -1
 		var _prev_index = -1
