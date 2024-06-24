@@ -5,13 +5,14 @@ var lv = gamepad_axis_value(global.selected_gamepad, gp_axislv)
 
 
 var action = undefined
-if (keyboard_check_released(vk_up) || lv < -0.5) {
+var min_axis = 0.99
+if (keyboard_check_released(vk_up) || lv < -1 * min_axis) {
 	action = Direction.Up
-} else if(keyboard_check_released(vk_left) || lh < -0.5) {
+} else if(keyboard_check_released(vk_left) || lh < -1 * min_axis) {
 	action = Direction.Left
-} else if(keyboard_check_released(vk_down)|| lv > 0.5 ) {
+} else if(keyboard_check_released(vk_down)|| lv > min_axis ) {
 	action = Direction.Down
-} else if(keyboard_check_released(vk_right) || lh > 0.5) {
+} else if(keyboard_check_released(vk_right) || lh > min_axis) {
 	action = Direction.Right
 }
 
