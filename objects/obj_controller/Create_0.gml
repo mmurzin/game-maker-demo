@@ -12,8 +12,7 @@ Direction = {
 persistent = true;
 global.selected_gamepad = -1
 global.gamepads = ds_map_create();
-alarm_speed = game_get_speed(gamespeed_fps)/10;
-
+alarm_speed = 1//game_get_speed(gamespeed_fps)/15;
 alarm[0] = alarm_speed;
 
 grid_width = 100; 
