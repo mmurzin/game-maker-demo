@@ -29,6 +29,13 @@ prev_lh = 0
 prev_lv = 0
 contorller_threshold = 0.5;
 
+long_timer_delay = 30
+//conroller long timers
+long_right_timer = 0
+long_left_timer = 0
+long_down_timer = 0
+long_up_timer = 0
+
 function handle_click(){
 	if(current_x == -1 && current_y == -1){
 		return
@@ -174,13 +181,5 @@ function _recalculate_button_grid(){
 	show_debug_message("ds_grid_height " + string(ds_grid_height(buttons_grid)))
 }
 min_axis_value = 0.09
-function check_controller_action(prev_value, current_value){
-	if current_value < min_axis_value {
-		return false
-	}
-	
-	var ratio = current_value/abs(current_value)
 
-	return false
-}
 
