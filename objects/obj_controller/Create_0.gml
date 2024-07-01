@@ -9,11 +9,20 @@ Direction = {
     Down: 3
 };
 
+globalvar DirectionMode;
+DirectionMode = {
+    None: 0,
+    Normal: 1,
+    Long: 2
+};
+
+
 persistent = true;
 global.selected_gamepad = -1
 global.gamepads = ds_map_create();
 alarm_keyboard_speed = 1//game_get_speed(gamespeed_fps)/15;
 alarm[0] = alarm_keyboard_speed;
+direction_mode = DirectionMode.None
 
 grid_width = 100; 
 grid_height = 100;
@@ -60,16 +69,16 @@ function handle_action(action){
 	}
 	clear_prev_focus(current_x, current_y)
 	if(action == Direction.Up){
-		var new_y = current_y + 1
-		if(new_y > max_y){
-			current_y = 0
+		var new_y = current_y - 1
+		if(new_y < 0){
+			current_y = max_y
 		} else {
 			current_y = new_y
 		}
 	} else if (action == Direction.Down) {
-		var new_y = current_y - 1
-		if(new_y < 0){
-			current_y = max_y
+		var new_y = current_y + 1
+		if(new_y > max_y){
+			current_y = 0
 		} else {
 			current_y = new_y
 		}

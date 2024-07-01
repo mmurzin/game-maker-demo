@@ -24,7 +24,8 @@ lh > 0 && lh > contorller_threshold && prev_lh < contorller_threshold){
 	action = Direction.Right
 }
 
-if(action != undefined){
+if(action != undefined && direction_mode != DirectionMode.Long){
+	direction_mode = DirectionMode.Normal
 	handle_action(action)
 }
 var long_action = undefined
@@ -57,6 +58,7 @@ if long_action != undefined {
 	long_right_timer = 0
 	long_down_timer = 0
 	long_up_timer = 0
+	direction_mode = DirectionMode.Long
 	handle_action(long_action)
 }
 
