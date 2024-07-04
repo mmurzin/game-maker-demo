@@ -44,6 +44,18 @@ long_right_timer = 0
 long_left_timer = 0
 long_down_timer = 0
 long_up_timer = 0
+//keyboard_long timer
+keyboard_right_timer = 0
+keyboard_left_timer = 0
+keyboard_up_timer = 0
+keyboard_down_timer = 0
+//keyboard delay
+keyboard_timer_delay = 30
+//keyboard regular timer 
+up_key_pressed = false
+down_key_pressed = false
+left_key_pressed = false
+right_key_pressed = false
 
 function handle_click(){
 	if(current_x == -1 && current_y == -1){
