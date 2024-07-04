@@ -90,6 +90,15 @@ if (prev_lh > contorller_threshold && lh > contorller_threshold){//right long cl
 	}
 }
 
+//reset timer
+
+if (prev_lh < contorller_threshold && lh < contorller_threshold) ||
+( prev_lh > -1*contorller_threshold && lh > -1*contorller_threshold ) ||
+(prev_lv < contorller_threshold && lv < contorller_threshold) ||
+(prev_lv > -1*contorller_threshold && lv > -1*contorller_threshold) {
+	direction_mode = DirectionMode.Normal
+}
+
 
 if long_action != undefined {
 	long_left_timer = 0
